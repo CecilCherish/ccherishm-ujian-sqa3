@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Ujian SQA3 Suite">
+    <test name="Locator Tests">
+        <classes>
+            <class name="com.juaracoding.BasicEightLocatorsTest"/>
+            <class name="com.juaracoding.AdvancedCssSelectorTest"/>
+            <class name="com.juaracoding.DynamicXPathAxesTest"/>
+        </classes>
+    </test>
+</suite>

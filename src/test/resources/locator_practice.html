@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JuaraCoding - Advanced Locators & Dynamic XPath Practice Portal</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f1f5f9; color: #1e293b; padding: 24px; }
+        .container { max-width: 1100px; margin: 0 auto; background: #ffffff; padding: 32px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        h1 { color: #0f172a; margin-bottom: 8px; font-size: 26px; }
+        p.subtitle { color: #64748b; margin-bottom: 24px; }
+        .section-box { border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 24px; background: #f8fafc; }
+        .section-title { color: #1e3a8a; font-size: 18px; margin-bottom: 12px; font-weight: 600; }
+        .form-group { margin-bottom: 14px; }
+        label { display: block; margin-bottom: 6px; font-size: 14px; font-weight: 500; color: #334155; }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px;
+        }
+        input:disabled { background-color: #e2e8f0; cursor: not-allowed; }
+        .btn { padding: 10px 18px; border-radius: 6px; border: none; font-weight: 600; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+        .btn-primary { background-color: #2563eb; color: #ffffff; }
+        .btn-success { background-color: #16a34a; color: #ffffff; }
+        .btn-danger { background-color: #dc2626; color: #ffffff; }
+        .btn-secondary { background-color: #64748b; color: #ffffff; }
+        .btn-sm { padding: 6px 12px; font-size: 12px; margin-right: 4px; }
+        .badge { display: inline-block; padding: 4px 10px; border-radius: 9999px; font-size: 12px; font-weight: 600; }
+        .badge-vip { background-color: #fef08a; color: #854d0e; }
+        .badge-verified { background-color: #dcfce7; color: #15803d; }
+        .badge-suspended { background-color: #fee2e2; color: #991b1b; }
+        table { width: 100%; border-collapse: collapse; margin-top: 12px; background: #ffffff; }
+        th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
+        th { background-color: #f1f5f9; color: #475569; font-weight: 600; }
+        tr:hover { background-color: #f8fafc; }
+        .feedback-banner { margin-top: 16px; padding: 14px; border-radius: 6px; background-color: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; font-weight: 500; display: none; }
+        ul.custom-list { list-style: none; padding-left: 0; }
+        ul.custom-list li { padding: 8px 12px; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
+        a { color: #2563eb; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="mainHeading">Portal Simulasi Rekening Nasabah JuaraCoding</h1>
+    <p class="subtitle">Modul Pembelajaran Selenium 4: 8 Basic Locators, Advanced CSS Selectors & Dynamic XPath Axes</p>
+
+    <!-- Feedback Banner setelah aksi diklik -->
+    <div id="actionFeedback" class="feedback-banner"></div>
+
+    <!-- BAGIAN 1: 8 BASIC LOCATORS -->
+    <div class="section-box" id="basicLocatorsSection">
+        <h2 class="section-title">Bagian 1: 8 Strategi Locator Dasar</h2>
+        <form id="formRegistration">
+            <div class="form-group">
+                <label for="txtCustomerCode">Kode Registrasi Nasabah (By.id):</label>
+                <input type="text" id="txtCustomerCode" value="CUST-REG-2026-9901" readonly />
+            </div>
+
+            <div class="form-group">
+                <label for="customerEmail">Alamat Email Nasabah (By.name):</label>
+                <input type="email" id="customerEmail" name="customerEmail" value="nasabah.prioritas@juaracoding.com" />
+            </div>
+
+            <div class="form-group">
+                <label>Status Keanggotaan (By.className):</label>
+                <span class="badge badge-vip">Nasabah Prioritas VIP Gold</span>
+                <span class="badge badge-verified">Terverifikasi Dukcapil</span>
+            </div>
+
+            <div class="form-group">
+                <label>Tautan Kebijakan (By.linkText & By.partialLinkText):</label>
+                <a href="#terms" id="lnkTerms">Syarat dan Ketentuan Layanan Perbankan</a>
+            </div>
+
+            <button type="button" id="btnSubmitRegistration" class="btn btn-primary btn-submit">
+                Daftarkan Data Nasabah
+            </button>
+        </form>
+    </div>
+
+    <!-- BAGIAN 2: ADVANCED CSS SELECTORS (SUBSTRING & PSEUDO-CLASSES) -->
+    <div class="section-box" id="advancedCssSection">
+        <h2 class="section-title">Bagian 2: Advanced CSS Selectors (Dynamic Attributes & Pseudo-classes)</h2>
+
+        <!-- Substring Prefix ^= -->
+        <div class="form-group">
+            <label>Token Sesi Dinamis (CSS Prefix ^= 'session_token_'):</label>
+            <input type="text" id="session_token_948271" value="TOKEN-SECURE-ALPHA-77" />
+        </div>
+
+        <!-- Substring Suffix $= -->
+        <div class="form-group">
+            <label>PIN Keamanan Kustom (CSS Suffix $= '_customer_pin'):</label>
+            <input type="password" id="user_auth_99182_customer_pin" value="123456" />
+        </div>
+
+        <!-- Substring Contains *= -->
+        <div class="form-group">
+            <label>Kode Cabang Finansial (CSS Contains *= '_branch_code_'):</label>
+            <input type="text" name="region_jkt_branch_code_wisma" value="JKT-DAANMOGOT-01" />
+        </div>
+
+        <!-- Hierarki Elemen & Adjacent Sibling + -->
+        <div class="form-group">
+            <label for="optNewsletter">Langganan Laporan Portofolio Bulanan:</label>
+            <input type="checkbox" id="optNewsletter" name="optNewsletter" checked />
+        </div>
+
+        <!-- Form Pseudo-Classes :disabled & :checked -->
+        <div class="form-group">
+            <label>Akun Terblokir (CSS Pseudo-class :disabled):</label>
+            <input type="text" id="txtBlockedAccount" value="AKUN DIBLOKIR SEMENTARA" disabled />
+        </div>
+
+        <!-- List Pseudo-classes :first-child, :nth-child(), :last-child -->
+        <div class="form-group">
+            <label>Katalog Produk Tabungan Perbankan (CSS :nth-child):</label>
+            <ul id="accountTypeList" class="custom-list">
+                <li id="item-saving-1">1. Tabungan Juara Masa Depan (Bunga 5.5% p.a)</li>
+                <li id="item-saving-2">2. Deposito Berjangka Valas USD (Bunga 4.2% p.a)</li>
+                <li id="item-saving-3">3. Giro Usaha Fleksibel Bebas Biaya Admin</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- BAGIAN 3: DYNAMIC XPATH & XPATH AXES PADA TABEL NASABAH -->
+    <div class="section-box" id="dynamicXpathSection">
+        <h2 class="section-title">Bagian 3: Dynamic XPath & XPath Axes pada Tabel Data Dinamis</h2>
+        <p style="margin-bottom: 12px; font-size: 14px; color: #475569;">
+            Tabel rekening di bawah mensimulasikan daftar mutasi real-time. Otomasi harus mampu menemukan tombol aksi berdasarkan teks Nama Nasabah atau No Rekening unik.
+        </p>
+
+        <!-- Elemen dengan spasi untuk pengujian normalize-space() -->
+        <button type="button" class="btn btn-secondary" id="btnFormattedSpaces" onclick="triggerAction('Konfirmasi', 'Semua Rekening')">
+            
+            Konfirmasi Transaksi Perbankan
+            
+        </button>
+
+        <table id="tblAccounts">
+            <thead>
+                <tr>
+                    <th>No Rekening</th>
+                    <th>Nama Pemilik</th>
+                    <th>Tipe Tabungan</th>
+                    <th>Saldo Efektif</th>
+                    <th>Status Rekening</th>
+                    <th>Aksi Transaksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="row-acc-1001">
+                    <td class="col-acc-no">ACC-1001</td>
+                    <td class="col-name">Budi Santoso</td>
+                    <td class="col-type">Tabungan Prioritas</td>
+                    <td class="col-balance">Rp 50.000.000</td>
+                    <td><span class="badge badge-verified">Aktif</span></td>
+                    <td class="col-actions">
+                        <button type="button" class="btn btn-primary btn-sm btn-action-transfer" onclick="triggerAction('Transfer', 'Budi Santoso', 'ACC-1001')">Transfer</button>
+                        <button type="button" class="btn btn-secondary btn-sm btn-action-edit" onclick="triggerAction('Ubah', 'Budi Santoso', 'ACC-1001')">Ubah</button>
+                        <button type="button" class="btn btn-danger btn-sm btn-action-block" onclick="triggerAction('Blokir', 'Budi Santoso', 'ACC-1001')">Blokir</button>
+                    </td>
+                </tr>
+                <tr id="row-acc-1002">
+                    <td class="col-acc-no">ACC-1002</td>
+                    <td class="col-name">Siti Nurhaliza</td>
+                    <td class="col-type">Deposito Berjangka</td>
+                    <td class="col-balance">Rp 120.000.000</td>
+                    <td><span class="badge badge-verified">Aktif</span></td>
+                    <td class="col-actions">
+                        <button type="button" class="btn btn-primary btn-sm btn-action-transfer" onclick="triggerAction('Transfer', 'Siti Nurhaliza', 'ACC-1002')">Transfer</button>
+                        <button type="button" class="btn btn-secondary btn-sm btn-action-edit" onclick="triggerAction('Ubah', 'Siti Nurhaliza', 'ACC-1002')">Ubah</button>
+                        <button type="button" class="btn btn-danger btn-sm btn-action-block" onclick="triggerAction('Blokir', 'Siti Nurhaliza', 'ACC-1002')">Blokir</button>
+                    </td>
+                </tr>
+                <tr id="row-acc-1003">
+                    <td class="col-acc-no">ACC-1003</td>
+                    <td class="col-name">Andi Wijaya</td>
+                    <td class="col-type">Giro Bisnis</td>
+                    <td class="col-balance">Rp 750.000.000</td>
+                    <td><span class="badge badge-suspended">Suspended</span></td>
+                    <td class="col-actions">
+                        <button type="button" class="btn btn-success btn-sm btn-action-activate" onclick="triggerAction('Aktivasi', 'Andi Wijaya', 'ACC-1003')">Aktivasi</button>
+                        <button type="button" class="btn btn-secondary btn-sm btn-action-edit" onclick="triggerAction('Ubah', 'Andi Wijaya', 'ACC-1003')">Ubah</button>
+                        <button type="button" class="btn btn-danger btn-sm btn-action-block" onclick="triggerAction('Blokir', 'Andi Wijaya', 'ACC-1003')">Blokir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function triggerAction(actionName, targetName, accNo) {
+        const banner = document.getElementById('actionFeedback');
+        let text = 'Aksi [' + actionName + '] berhasil diproses untuk ' + targetName;
+        if (accNo) {
+            text += ' (' + accNo + ')';
+        }
+        banner.innerText = text;
+        banner.style.display = 'block';
+    }
+
+    document.getElementById('btnSubmitRegistration').addEventListener('click', function() {
+        triggerAction('Pendaftaran', 'Nasabah Baru Terdaftar', 'REG-OK');
+    });
+</script>
+
+</body>
+</html>
